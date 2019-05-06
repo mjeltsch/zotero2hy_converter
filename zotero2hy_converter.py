@@ -15,7 +15,7 @@
 # For questions, contact michael@jeltsch.org
 #
 
-import requests, json, codecs
+import requests, json, codecs, datetime
 from time import gmtime, strftime
 
 # Make a list of all Zotero group libraries
@@ -144,8 +144,7 @@ for library, url in urls.items():
 "    <title>Zotero Feed</title>\n",
 "    <link>https://jeltsch.org</link>\n",
 "    <description>RSS Feed</description>\n",
-'    <pubDate>{0}</pubDate>\n'.format(time_string1),
-'    <dc:date>{0}</dc:date>\n'.format(time_string2)])
+'    <pubDate>{0}</pubDate>\n'.format(time_string1)])
 	feed.write(feedstring)
 	feed.writelines(["  </channel>\n", "</rss>\n"])
 	feed.close()
