@@ -85,7 +85,13 @@ for library, url in urls.items():
 		feedstring += "    <item>\n"
 		feedstring += "      <title>" + publication['title'] + "</title>\n"
 		feedstring += "      <link>" + publication['url'] + "</link>\n"
-		feedstring += "      <pubDate>" + publication['date'] + "</pubDate>\n"
+		print('Date: ' + publication['date'])
+                # This requires to give the 'Date' in Zotero like "2015-11-29" (year-month-day)
+		datelist = publication['date'].split('-')
+		publication_time_struct = datetime.date(int(datelist[0]), int(datelist[1]), int(datelist[2])).timetuple() 
+		publication_time_human = strftime("%a, %d %b %Y %H:%M:%S GMT", publication_time_struct)
+		print(publication_time_human)
+		feedstring += "      <pubDate>" + publication_time_human + "</pubDate>\n"
 		authorlist = ''
 		editorlist = ''
 		i = 0
@@ -132,8 +138,8 @@ for library, url in urls.items():
 
 	# Generate time strings for the RSS header
 	time_now = gmtime()
-	time_string1 = strftime("%a, %d %b %Y %H:%M:%S GMT", time_now)
-	time_string2 = strftime("%Y-%m-%dT%H:%M:%SZ", time_now)
+	time_string1_now = strftime("%a, %d %b %Y %H:%M:%S GMT", time_now)
+	time_string2_now = strftime("%Y-%m-%dT%H:%M:%SZ", time_now)
 	# Open file for writing
 	rssfilename = library + ".rss"
 	feed = codecs.open(rssfilename, "w", "utf-8-sig") 
@@ -144,7 +150,7 @@ for library, url in urls.items():
 "    <title>Zotero Feed</title>\n",
 "    <link>https://jeltsch.org</link>\n",
 "    <description>RSS Feed</description>\n",
-'    <pubDate>{0}</pubDate>\n'.format(time_string1)])
+'    <pubDate>{0}</pubDate>\n'.format(time_string1_now)])
 	feed.write(feedstring)
 	feed.writelines(["  </channel>\n", "</rss>\n"])
 	feed.close()
