@@ -85,12 +85,13 @@ for library, url in urls.items():
 		feedstring += "    <item>\n"
 		feedstring += "      <title>" + publication['title'] + "</title>\n"
 		feedstring += "      <link>" + publication['url'] + "</link>\n"
-		print('Date: ' + publication['date'])
+		feedstring += "      <guid>" + publication['url'] + "</guid>\n"
+		#print('Date: ' + publication['date'])
                 # This requires to give the 'Date' in Zotero like "2015-11-29" (year-month-day)
 		datelist = publication['date'].split('-')
 		publication_time_struct = datetime.date(int(datelist[0]), int(datelist[1]), int(datelist[2])).timetuple() 
 		publication_time_human = strftime("%a, %d %b %Y %H:%M:%S GMT", publication_time_struct)
-		print(publication_time_human)
+		#print(publication_time_human)
 		feedstring += "      <pubDate>" + publication_time_human + "</pubDate>\n"
 		authorlist = ''
 		editorlist = ''
