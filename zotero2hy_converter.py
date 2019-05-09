@@ -146,8 +146,10 @@ for library, url in urls.items():
 	feed = codecs.open(rssfilename, "w", "utf-8-sig") 
 	# Write RSS feed to file	
 	feed.writelines(["<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
-"<rss xmlns:dc=\"http://purl.org/dc/elements/1.1/\" version=\"2.0\">\n",
+#"<rss xmln:sdc=\"http://purl.org/dc/elements/1.1/\" version=\"2.0\">\n",
+"<rss version=\"2.0\" xmlns:atom=\"http://www.w3.org/2005/Atom\">\n",
 "  <channel>\n",
+"    <atom:link href=\"https://images.jeltsch.org/jMpn4_z%40a6TKs8xyUGPqr/Featured_Publications.rss\" rel=\"self\" type=\"application/rss+xml\" />\n",
 "    <title>Zotero Feed</title>\n",
 "    <link>https://jeltsch.org</link>\n",
 "    <description>RSS Feed</description>\n",
