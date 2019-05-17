@@ -149,7 +149,7 @@ for library, url in urls.items():
 #"<rss xmln:sdc=\"http://purl.org/dc/elements/1.1/\" version=\"2.0\">\n",
 "<rss version=\"2.0\" xmlns:atom=\"http://www.w3.org/2005/Atom\">\n",
 "  <channel>\n",
-"    <atom:link href=\"https://images.jeltsch.org/jMpn4_z%40a6TKs8xyUGPqr/Featured_Publications.rss\" rel=\"self\" type=\"application/rss+xml\" />\n",
+'    <atom:link href=\"https://images.jeltsch.org/jMpn4_z%40a6TKs8xyUGPqr/{0}.rss\" rel=\"self\" type=\"application/rss+xml\" />\n'.format(library),
 "    <title>Zotero Feed</title>\n",
 "    <link>https://jeltsch.org</link>\n",
 "    <description>RSS Feed</description>\n",
@@ -157,4 +157,3 @@ for library, url in urls.items():
 	feed.write(feedstring)
 	feed.writelines(["  </channel>\n", "</rss>\n"])
 	feed.close()
-
